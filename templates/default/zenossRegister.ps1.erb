@@ -1,0 +1,11 @@
+$user = "<%= node[:zenoss_client][:admin_user] %>"
+$pass = "<%= node[:zenoss_client][:admin_pass] %>"
+
+$baseUri = "<%= node[:zenoss_client][:zen_server] %>"
+
+$uri = New-Object System.Uri($baseUri + "?deviceName=<%= node[:fqdn] %>&devicePath=<%= node[:zenoss_client][:devicePath] %>&productionState=<%= node[:zenoss_client][:productionState] %>&loadDevice:method=1")
+
+$encoded = [System.Convert]::TOBase64String([System.Text.Encoding]::UTF8.GetBytes($user+":"+$pass))
+$header = @{Authorization = "Basic "+$encoded}
+$r = Invoke-WebRequest -Uri $uri.AbsoluteUri -Headers $header
+$r.Content
