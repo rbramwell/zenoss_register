@@ -19,7 +19,7 @@
 actions :register
 default_action :register
 
-attribute :name,                kind_of: String, name_attribute: true
+attribute :deviceName,                kind_of: String, name_attribute: true
 attribute :username,            kind_of: String, default: 'admin'
 attribute :password,            kind_of: String, default: 'zenoss'
 attribute :baseuri,             kind_of: String
@@ -31,4 +31,4 @@ when 'linux'
 else
   attribute :devicePath,        kind_of: String, default: '/Server'
 end
-attribute :productionValue,     kind_of: Integer, default: prod_state(node['chef_environment']) 
+attribute :productionState,     kind_of: Integer, default: prod_state(node['chef_environment']) 
