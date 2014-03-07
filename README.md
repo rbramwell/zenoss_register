@@ -13,21 +13,23 @@ zenoss_client node['hostname'] do
   username 'admin'
   password 'admin'
   baseuri 'http://zenoss.example.com:8080'
-  
-
-Configure NTP server as a role
-
-```
-name "ntp_server'
-description 'Role applied to NTP servers'
+  productionValue 1000
+  devicePath '/Server/Windows'
+end
+```` 
+````
+name 'zenoss_client'
+description 'Add a client to a Zenoss Core 4 server'
 default_attributes(
- 'ntp' => { 
-  'servers'      => ['rackety.udel.edu', 'clock.via.net', 'time-a.nist.gov', 'time-b.nist.gov', 'time.wvu.edu', 'ntp-1.cso.uiuc.edu'],
-  'peers'        => ['10.101.7.149', '10.101.7.150'. '10.101.7.151'],
-  'restrictions' => ['10.0.0.0 mask 255.0.0.0 nomodify notrap', '172.16.0.0 mask 255.255.0.0 nomodify notrap']
+ 'zenoss_client' => { 
+  'username'          => 'admin',
+  'password'          => 'password',
+  'baseuri'           => 'http://zen.example.com:8080',
+  'productionValue'   => 1000,
+  'devicePath'        => '/Server'
  }
 )
-```
+````
 
 # Attributes
 The following are attributes that can be overridden in the `ntp` namespace
