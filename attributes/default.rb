@@ -3,7 +3,7 @@
 # Attributes:: default
 #
 # Copyright (C) 2014 Patrick Moore <moore267@marshall.edu>
-# 
+#
 # All rights reserved - Do Not Redistribute
 #
 default['zenoss_register']['username'] = 'admin'
