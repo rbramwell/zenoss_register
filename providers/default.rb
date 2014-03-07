@@ -38,7 +38,7 @@ action :register do
 
     Chef::Log.info('HTTP return code: ' + res.code)
 
-    if output.include? "Device #{new_resource.hostname} loaded!"
+    if output.include? "Device #{new_resource.deviceName} loaded!"
       Chef::Log.info("Zenoss registration successful. It is located in #{new_resource.devicePath}")
       node.set['zenoss_register']['registered'] = true
     else
