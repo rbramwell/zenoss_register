@@ -14,3 +14,4 @@ suites:
     run_list:
       - recipe[zenoss-client::default]
     attributes:
+      chef_environment: '_default'
