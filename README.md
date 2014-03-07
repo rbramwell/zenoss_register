@@ -1,4 +1,4 @@
-# zenoss-client LWRP
+# zenoss_register LWRP
 Registers a client with a Zenoss Core 4 monitoring server. This will register both Linux and Windows systems as it uses the ruby built-in with chef-client to perform a POST call back to the server.
 
 # Requirements
@@ -9,7 +9,7 @@ Tested with Zenoss Core 4.
 Configure a client to register with Zenoss Core 4
 
 ````
-zenoss_client node['hostname'] do
+zenoss_register node['hostname'] do
   username 'admin'
   password 'admin'
   baseuri 'http://zenoss.example.com:8080'
@@ -18,10 +18,10 @@ zenoss_client node['hostname'] do
 end
 ```` 
 ````
-name 'zenoss_client'
+name 'zenoss_register'
 description 'Add a client to a Zenoss Core 4 server'
 default_attributes(
- 'zenoss_client' => { 
+ 'zenoss_register' => { 
   'username'          => 'admin',
   'password'          => 'password',
   'baseuri'           => 'http://zen.example.com:8080',
@@ -34,27 +34,27 @@ default_attributes(
 
 # Attributes
 The following are attributes that can be overridden in the `ntp` namespace
-* `['zenoss_client']['username']`
+* `['zenoss_register']['username']`
   - String
   - Default 'admin'
   - Username on Zenoss which can create new objects
-* `['zenoss_client']['password']`
+* `['zenoss_register']['password']`
   - String
   - Default 'password'
   - Password for account who can create new objects
-* `['zenoss_client']['baseuri']`
+* `['zenoss_register']['baseuri']`
   - String
   - Default 'http://zen.example.com:8080'
   - Base URL of the Zenoss server including the port. Do not provide a trailing slash
-* `['zenoss_client']['productionValue']`
+* `['zenoss_register']['productionValue']`
   - String
   - Default 1000 or the node's environment variable
   - Production values based on Zenoss Core 4
-* `['zenoss_client']['devicePath']`
+* `['zenoss_register']['devicePath']`
   - String
   - Default '/Server'
   - The location the object should exist within Zenoss. Defaults to /Server/Linux or /Server/Windows based upon platform
-* `['zenoss_client']['registered']`
+* `['zenoss_register']['registered']`
   - Boolean
   - Default null
   - Set to true once the server has been registered to prevent it from being added during every chef-client run

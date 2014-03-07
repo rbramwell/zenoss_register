@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: zenoss-client
+# Cookbook Name:: zenoss_register
 # Resource:: default
 #
 #  Copyright (C) 2014 Patrick Moore <moore267@marshall.edu>
