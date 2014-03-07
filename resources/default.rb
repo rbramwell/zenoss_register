@@ -19,10 +19,10 @@
 actions :register
 default_action :register
 
-attribute :deviceName,                kind_of: String, name_attribute: true
+attribute :deviceName,          kind_of: String, name_attribute: true
 attribute :username,            kind_of: String, default: 'admin'
 attribute :password,            kind_of: String, default: 'zenoss'
-attribute :baseuri,             kind_of: String
+attribute :baseuri,             kind_of: String, default: "http://zen.#{node['domain']}:8080"
 case node['kernel']['os']
 when 'WINNT'
   attribute :devicePath,        kind_of: String, default: '/Server/Windows'
@@ -31,4 +31,4 @@ when 'linux'
 else
   attribute :devicePath,        kind_of: String, default: '/Server'
 end
-attribute :productionState,     kind_of: Integer, default: prod_state(node['chef_environment']) 
+attribute :productionState,     kind_of: Integer, default: prod_state(node['chef_environment'])

@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-# Hash lookup for various likely chef_environment strings
-def prod_state_lookup(pstate)
-=======
 # 
-# Cookbook Name:: zenoss-client
+# Cookbook Name:: zenoss-register
 # Recipe:: default
 #
 #  Copyright (C) 2014 Patrick Moore <moore267@marshall.edu>, Eric G. Wolfe <wolfe21@marshall.edu>
@@ -20,11 +16,8 @@ def prod_state_lookup(pstate)
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-def prod_state [( pstate='production' )]
-
->>>>>>> 23a86134173d5d47c3f8b1001a45d6120e20049c
-  # Hash with name => numeric mappings
+# Hash lookup for various likely chef_environment strings
+def prod_state_lookup(pstate)
   pstate_table = { 'production' => 1000, 'prod' => 1000, '_default' => 1000,
                    'preprod' => 500, 'preproduction' => 500,
                    'pre-production' => 500, 'test' => 400, 'maintenance' => 300,
