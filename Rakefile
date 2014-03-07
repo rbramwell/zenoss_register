@@ -1,9 +1,5 @@
 #!/usr/bin/env rake
 
-# chefspec task against spec/*_spec.rb
-require 'rspec/core/rake_task'
-RSpec::Core::RakeTask.new(:chefspec)
-
 # rubocop rake task
 desc "Ruby style guide linter"
 task :rubocop do
