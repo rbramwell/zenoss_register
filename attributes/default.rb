@@ -6,10 +6,9 @@
 # 
 # All rights reserved - Do Not Redistribute
 #
-default['zenoss_client']['admin_user'] = 'admin'
-default['zenoss_client']['admin_pass'] = 'zenoss'
-default['zenoss_client']['zen_server'] = 'http://zen02.marshall.edu:8080/zport/dmd/DeviceLoader'
+default['zenoss_client']['username'] = 'admin'
+default['zenoss_client']['password'] = 'password'
+default['zenoss_client']['baseuri'] = 'http://zen.example.com:8080'
 
-default['zenoss_client']['productionState'] = 1000
-default['zenoss_client']['devicePath'] = '/Server/NEW'
-default['zenoss_client']['deviceLocation'] = '/Huntington/Drink Library'
+default['zenoss_client']['productionValue'] = 1000
+default['zenoss_client']['devicePath'] = '/Server'
