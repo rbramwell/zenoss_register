@@ -19,7 +19,7 @@
 actions :register
 default_action :register
 
-attribute :hostname,            kind_of: String, name_attribute: true
+attribute :name,                kind_of: String, name_attribute: true
 attribute :username,            kind_of: String, default: 'admin'
 attribute :password,            kind_of: String, default: 'zenoss'
 attribute :baseuri,             kind_of: String
