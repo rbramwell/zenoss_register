@@ -10,16 +10,42 @@ Requirements
 
 Tested with Zenoss Core 4.  Depends on `net/http`, which should be provided by Chef's Ruby.
 
+Resources/Providers
+-------------------
+
+#### zenoss_register
+
+This resource allows one to register a client on a Zenoss via LWRP.
+Parameters, devicePath and productionState are derived from, Ohai `kernel.os`
+and `chef_environment` method respectively.
+
+The included `prod_state` library will return numeric values to somewhat
+intelligently calculate the Zenoss productionState value.
+
+Generally `prod_state` outputs the following for `productionState` given environment inputs.
+
+    production/prod => 1000,
+    pre-prod/preprod => 500,
+    test => 400,
+    maintenance => 300,
+    decommissioned => -1,
+    other => 1000
+
+`devicePath` will be set to /Server/Windows, /Server/Linux, or /Server depending on `kernel.os`
+
 Usage
 -----
 
-Configure a client to register with Zenoss using LWRP.
+Configure a client to register with Zenoss using LWRP.  See default recipe
+for an example.
 
 ```
 zenoss_register node['hostname'] do
   username 'admin'
   password 'admin'
   baseuri 'http://zenoss.example.com:8080'
+  devicePath '/Server/Linux'
+  productionState prod_state['production']
 end
 ```
 
@@ -29,12 +55,13 @@ Configure a client to register with Zenoss via role.
 name 'zenoss_register_production'
 description 'Add a client to a Zenoss Core 4 server'
 default_attributes(
- 'zenoss_register' => { 
-  'username'          => 'admin',
-  'password'          => 'password',
-  'baseuri'           => 'http://zen.example.com:8080',
- }
+  'zenoss_register' => { 
+    'username'          => 'admin',
+    'password'          => 'password',
+    'baseuri'           => 'http://zen.example.com:8080',
+  }
 )
+run_list "recipe[zenoss_register::default]"
 ```
 
 Attributes
