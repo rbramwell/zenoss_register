@@ -1,6 +1,6 @@
 action :register do
   Chef::Log.info("Current Zenoss Client Registration Status: #{node['zenoss-client']['registered']}")
-  if node['zenoss-client']['registered'] != true
+  unless node['zenoss-client']['registered']
 
     Chef::Log.info("Registering node with zen server #{new_resource}")
 
