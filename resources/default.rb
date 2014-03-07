@@ -24,9 +24,9 @@ attribute :username,            kind_of: String, default: 'admin'
 attribute :password,            kind_of: String, default: 'zenoss'
 attribute :baseuri,             kind_of: String, default: "http://zen.#{node['domain']}:8080"
 case node['kernel']['os']
-when 'WINNT'
+when /(winnt|windows)/i
   attribute :devicePath,        kind_of: String, default: '/Server/Windows'
-when 'linux'
+when /linux/i
   attribute :devicePath,        kind_of: String, default: '/Server/Linux'
 else
   attribute :devicePath,        kind_of: String, default: '/Server'

@@ -17,7 +17,7 @@
 # limitations under the License.
 
 action :register do
-  Chef::Log.info("Current Zenoss Client Registration Status: #{node['zenoss-client']['registered']}")
+  Chef::Log.info("Current Zenoss Client Registration Status: #{node['zenoss_register']['registered']}")
   unless node['zenoss_register']['registered']
 
     Chef::Log.info("Registering node with zen server #{new_resource}")
@@ -38,7 +38,7 @@ action :register do
 
     Chef::Log.info('HTTP return code: ' + res.code)
 
-    if output.include? "Device #{new_resource.hostname} loaded!"
+    if output.include? "Device #{new_resource.deviceName} loaded!"
       Chef::Log.info("Zenoss registration successful. It is located in #{new_resource.devicePath}")
       node.set['zenoss_register']['registered'] = true
     else
