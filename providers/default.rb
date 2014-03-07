@@ -6,7 +6,8 @@ action :register do
 
         require 'net/http'
         base_uri = "#{new_resource.baseuri}"
-        post_uri = "?deviceName=#{new_resource.hostname}&devicePath=#{new_resource.devicePath}&productionState=#{new_resource.productionValue}&loadDevice:method=1"
+	base_uri = base_uri + "/zport/dmd/DeviceLoader?"
+        post_uri = "deviceName=#{new_resource.hostname}&devicePath=#{new_resource.devicePath}&productionState=#{new_resource.productionValue}&loadDevice:method=1"
         full_uri = URI(base_uri + post_uri)
 
 	Chef::Log.info("POST URI: " + base_uri + post_uri)
