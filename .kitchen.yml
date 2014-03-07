@@ -12,6 +12,5 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[zenoss-client::default]
+      - recipe[zenoss_register::default]
     attributes:
-      chef_environment: '_default'

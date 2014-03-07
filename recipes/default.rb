@@ -1,5 +1,5 @@
 # 
-# Cookbook Name:: zenoss-client
+# Cookbook Name:: zenoss_register
 # Recipe:: default
 #
 #  Copyright (C) 2014 Patrick Moore <moore267@marshall.edu>
@@ -17,7 +17,7 @@
 # limitations under the License.
 
 
-zenoss_client node['hostname'] do
+zenoss_register node['hostname'] do
   username node['zenoss_register']['username']
   password node['zenoss_register']['password']
   baseuri node['zenoss_register']['baseuri']

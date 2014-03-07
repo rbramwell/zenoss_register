@@ -31,4 +31,4 @@ when 'linux'
 else
   attribute :devicePath,        kind_of: String, default: '/Server'
 end
-attribute :productionState,     kind_of: Integer, default: prod_state(node['chef_environment'])
+attribute :productionState,     kind_of: Integer, default: prod_state(node.chef_environment)
