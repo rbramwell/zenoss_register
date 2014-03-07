@@ -18,7 +18,7 @@
 
 
 zenoss_client node['hostname'] do
-  username node['zenoss_client']['username']
-  password node['zenoss_client']['password']
-  baseuri node['zenoss_client']['baseuri']
+  username node['zenoss_register']['username']
+  password node['zenoss_register']['password']
+  baseuri node['zenoss_register']['baseuri']
 end

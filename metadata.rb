@@ -1,4 +1,4 @@
-name             'zenoss-client'
+name             'zenoss-register'
 maintainer       'Patrick Moore'
 maintainer_email 'moore267@marshall.edu'
 license          'All rights reserved'
