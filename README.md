@@ -13,7 +13,7 @@ Tested with Zenoss Core 4.  Depends on `net/http`, which should be provided by C
 Resources/Providers
 -------------------
 
-#### zenoss_register
+### zenoss_register
 
 This resource allows one to register a client on a Zenoss via LWRP.
 Parameters, devicePath and productionState are derived from, Ohai `kernel.os`
@@ -33,8 +33,7 @@ Generally `prod_state` outputs the following for `productionState` given environ
 
 `devicePath` will be set to /Server/Windows, /Server/Linux, or /Server depending on `kernel.os`
 
-Usage
------
+#### Examples
 
 Configure a client to register with Zenoss using LWRP.  See default recipe
 for an example.
@@ -64,6 +63,24 @@ default_attributes(
 run_list "recipe[zenoss_register::default]"
 ```
 
+#### Actions
+
+* `:register` is the only action supported at this time.
+
+#### Parameters
+
+* `deviceName` - Hostname of device to be monitored, defaults to name of resource.
+
+* `username` - an API admin with permission to add devices to Zenoss, default `admin`.
+
+* `password` - an API password with permission to add devices to Zenoss, default `zenoss`.
+
+* `baseuri` - the base URI/URL for your Zenoss instance, default `http://zen.#{node['domain']}:8080`
+
+* `devicePath` - the device container where the monitored client will be added, default platform-specific.
+
+* `productionState` - the numerical Zenoss state, based on the `chef_environment` method.  Default, derived via `prod_state(chef.environment)`
+
 Attributes
 ----------
 
@@ -91,15 +108,28 @@ Attribute set by provider, probably should not mess with this:
   - Default false
   - Set in provider to true.
 
-Resources
----------
+References
+----------
 
 * [Automatically adding and editing devices in Zenoss Core 4 using the API](http://blog.remibergsma.com/2013/04/26/automatically-adding-and-editing-devices-in-zenoss-core-4-using-the-api/)
 * [Zenoss Core 4 JSON and API Documentation](http://community.zenoss.org/community/documentation/official_documentation/api)
 
-Authors
--------
+License and Authors
+-------------------
 
-Author:: Patrick Moore (moore267@marshall.edu),
-         Eric G. Wolfe (wolfe21@marshall.edu)
+Author:: Patrick Moore (moore267@marshall.edu)
+
+Eric G. Wolfe (wolfe21@marshall.edu)
+
 Copyright:: 2014
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License
