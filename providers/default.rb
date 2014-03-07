@@ -17,7 +17,7 @@
 # limitations under the License.
 
 action :register do
-  Chef::Log.info("Current Zenoss Client Registration Status: #{node['zenoss-client']['registered']}")
+  Chef::Log.info("Current Zenoss Client Registration Status: #{node['zenoss_register']['registered']}")
   unless node['zenoss_register']['registered']
 
     Chef::Log.info("Registering node with zen server #{new_resource}")
