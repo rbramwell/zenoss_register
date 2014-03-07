@@ -1,5 +1,5 @@
 # zenoss-client LWRP
-Registers a client with a Zenoss Core 4 monitoring server
+Registers a client with a Zenoss Core 4 monitoring server. This will register both Linux and Windows systems as it uses the ruby built-in with chef-client to perform a POST call back to the server.
 
 # Requirements
 
@@ -26,28 +26,42 @@ default_attributes(
   'password'          => 'password',
   'baseuri'           => 'http://zen.example.com:8080',
   'productionValue'   => 1000,
-  'devicePath'        => '/Server'
+  'devicePath'        => '/Server',
+  'registered'        => nil
  }
 )
 ````
 
 # Attributes
 The following are attributes that can be overridden in the `ntp` namespace
-
-* `['ntp']['servers']`
-  - Array of upstream NTP servers. 
-  - Default [rackety.udel.edu clock.via.net time-a.nist.gov time-b.nist.gov time.wvu.edu ntp-1.cso.uiuc.edu]
-* `['ntp']['peers']`
-  - Array of peer NTP servers
-  - Default [10.101.7.149 10.101.7.150 10.101.7.151]
-* `['ntp']['restrictions']`
-  - Array of restrictions to apply
-  - Default ['10.0.0.0 mask 255.0.0.0 nomodify notrap' '172.16.0.0 mask 255.255.0.0 nomodify notrap']
+* `['zenoss_client']['username']`
+  - String
+  - Default 'admin'
+  - Username on Zenoss which can create new objects
+* `['zenoss_client']['password']`
+  - String
+  - Default 'password'
+  - Password for account who can create new objects
+* `['zenoss_client']['baseuri']`
+  - String
+  - Default 'http://zen.example.com:8080'
+  - Base URL of the Zenoss server including the port. Do not provide a trailing slash
+* `['zenoss_client']['productionValue']`
+  - String
+  - Default 1000 or the node's environment variable
+  - Production values based on Zenoss Core 4
+* `['zenoss_client']['devicePath']`
+  - String
+  - Default '/Server'
+  - The location the object should exist within Zenoss. Defaults to /Server/Linux or /Server/Windows based upon platform
+* `['zenoss_client']['registered']`
+  - Boolean
+  - Default null
+  - Set to true once the server has been registered to prevent it from being added during every chef-client run
 
 # Resources
-* [Stratum 1 Time Servers](http://support.ntp.org/bin/view/Servers/StratumOneTimeServers)
-* [NTP FAQ](http://www.ntp.org/ntpfaq/NTP-a-faq.htm)
-* [NTP Documentation](http://www.ntp.org/documentation.html)
+* [Automatically adding and editing devices in Zenoss Core 4 using the API](http://blog.remibergsma.com/2013/04/26/automatically-adding-and-editing-devices-in-zenoss-core-4-using-the-api/)
+* [Zenoss Core 4 JSON and API Documentation](http://community.zenoss.org/community/documentation/official_documentation/api)
 
 # Author
 
