@@ -13,13 +13,16 @@ Tested with Zenoss Core 4.  Depends on `net/http`, which should be provided by C
 Usage
 -----
 
-Configure a client to register with Zenoss using LWRP.
+Configure a client to register with Zenoss using LWRP.  See default recipe
+for an example.
 
 ```
 zenoss_register node['hostname'] do
   username 'admin'
   password 'admin'
   baseuri 'http://zenoss.example.com:8080'
+  devicePath '/Server/Linux'
+  productionState 'production'
 end
 ```
 
@@ -29,12 +32,13 @@ Configure a client to register with Zenoss via role.
 name 'zenoss_register_production'
 description 'Add a client to a Zenoss Core 4 server'
 default_attributes(
- 'zenoss_register' => { 
-  'username'          => 'admin',
-  'password'          => 'password',
-  'baseuri'           => 'http://zen.example.com:8080',
- }
+  'zenoss_register' => { 
+    'username'          => 'admin',
+    'password'          => 'password',
+    'baseuri'           => 'http://zen.example.com:8080',
+  }
 )
+run_list "recipe[zenoss_register::default]"
 ```
 
 Attributes
