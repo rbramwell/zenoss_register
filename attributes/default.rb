@@ -18,3 +18,4 @@
 default['zenoss_register']['username'] = 'admin'
 default['zenoss_register']['password'] = 'zenoss'
 default['zenoss_register']['baseuri'] = "http://zen.#{node['domain']}:8080"
+default['zenoss_register']['registered'] = false
