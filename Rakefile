@@ -20,7 +20,7 @@ task :foodcritic do
   end
 end
 
-task :default => [ 'foodcritic', 'rubocop', 'chefspec' ]
+task :default => [ 'foodcritic', 'rubocop' ]
 
 begin
   require 'kitchen/rake_tasks'
