@@ -1,5 +1,9 @@
 #!/usr/bin/env rake
 
+# chefspec task against spec/*_spec.rb
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new(:chefspec)
+
 # rubocop rake task
 desc "Ruby style guide linter"
 task :rubocop do
@@ -16,7 +20,7 @@ task :foodcritic do
   end
 end
 
-task :default => [ 'foodcritic', 'rubocop' ]
+task :default => [ 'chefspec', 'foodcritic', 'rubocop' ]
 
 begin
   require 'kitchen/rake_tasks'
