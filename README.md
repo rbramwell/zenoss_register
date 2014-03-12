@@ -101,6 +101,15 @@ The following are attributes that can be overridden in the `zenoss_register` nam
   - Default "http://zen.#{node['domain']}:8080"
   - Base URL of the Zenoss server including the port. Do not provide a trailing slash
 
+* `['zenoss_register']['devicePath']`
+  - String
+  - Default platform specific
+
+* `['zenoss_register']['productionState']`
+  - Integer
+  - Default is derived from chef environment, otherwise 1000
+  - Sets production state within Zenoss
+
 Attribute set by provider, probably should not mess with this:
 
 * `['zenoss_register']['registered']`
