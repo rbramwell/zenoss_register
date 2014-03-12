@@ -20,4 +20,6 @@ zenoss_register node['hostname'] do
   username node['zenoss_register']['username']
   password node['zenoss_register']['password']
   baseuri node['zenoss_register']['baseuri']
+  productionState node['zenoss_register']['productionState']
+  devicePath node['zenoss_register']['devicePath']
 end

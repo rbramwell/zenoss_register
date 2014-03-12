@@ -19,3 +19,14 @@ default['zenoss_register']['username'] = 'admin'
 default['zenoss_register']['password'] = 'zenoss'
 default['zenoss_register']['baseuri'] = "http://zen.#{node['domain']}:8080"
 default['zenoss_register']['registered'] = false
+
+case node['kernel']['os']
+when /(winnt|windows)/i
+  default['zenoss_register']['devicePath'] = '/Server/Windows'
+when /linux/i
+  default['zenoss_register']['devicePath'] = '/Server/Linux'
+else
+  default['zenoss_register']['devicePath'] = '/Server'
+end
+
+default['zenoss_register']['productionState'] = prod_state(node.chef_environment)
