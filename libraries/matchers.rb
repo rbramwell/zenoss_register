@@ -3,7 +3,7 @@
 #
 # This is not a reusable matcher. You will need to stub a custom response
 # Example Response for confirming the device was loaded:
-#  stub_request(:any, /.*example.*/).to_return(:body => "Device example loaded!", :status => 200)
+#  stub_request(:any, /.*/).to_return(:body => "Device example loaded!", :status => 200)
 #
 
 if defined?(ChefSpec)
