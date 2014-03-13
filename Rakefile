@@ -20,7 +20,16 @@ task :foodcritic do
   end
 end
 
+# rubocop jenkins rake task
+desc 'Ruby style guide - checkformat output'
+task :rubocop_checkformat do
+  sh 'rubocop --require rubocop/formatter/checkstyle_formatter --format Rubocop::Formatter::CheckstyleFormatter > checkstyle.xml'
+end
+   
+
 task :default => [ 'chefspec', 'foodcritic', 'rubocop' ]
+
+task :jenkins => [ 'chefspec', 'foodcritic', 'rubocop_checkformat' ]
 
 begin
   require 'kitchen/rake_tasks'
