@@ -38,10 +38,12 @@ action :register do
 
     Chef::Log.info('HTTP return code: ' + res.code)
 
-    if output.include? "Device #{new_resource.deviceName} loaded!"
+    if output.include?("Device #{new_resource.deviceName} loaded!")
       Chef::Log.info("Zenoss registration successful. It is located in #{new_resource.devicePath}")
       node.set['zenoss_register']['registered'] = true
-    else
+    elsif output.include?("Device #{new_resource.deviceName} already exists")
+      node.set['zenoss_register']['registered'] = true
+    else 
       Chef::Log.warn('HTTP Status code: ' + res.code)
       Chef::Log.warn(output)
       fail 'Zenoss registration failed!'
