@@ -43,7 +43,7 @@ action :register do
       node.set['zenoss_register']['registered'] = true
     elsif output.include?("Device #{new_resource.deviceName} already exists")
       node.set['zenoss_register']['registered'] = true
-    else 
+    else
       Chef::Log.warn('HTTP Status code: ' + res.code)
       Chef::Log.warn(output)
       fail 'Zenoss registration failed!'
