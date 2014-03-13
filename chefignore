@@ -97,3 +97,6 @@ Vagrantfile
 
 # Chefspec coverage
 .coverage
+
+# checkstyle
+checkstyle.xml

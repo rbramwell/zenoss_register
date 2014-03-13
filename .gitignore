@@ -17,3 +17,5 @@ bin/*
 .kitchen.local.yml
 
 .coverage
+metadata.json
+checkstyle.xml
