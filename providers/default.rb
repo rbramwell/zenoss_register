@@ -24,7 +24,7 @@ action :register do
 
     require 'net/http'
     base_uri = new_resource.baseuri
-    base_uri = base_uri + '/zport/dmd/DeviceLoader?'
+    base_uri += '/zport/dmd/DeviceLoader?'
     post_uri = "deviceName=#{new_resource.deviceName}&devicePath=#{new_resource.devicePath}&productionState=#{new_resource.productionState}&loadDevice:method=1"
     full_uri = URI(base_uri + post_uri)
 
